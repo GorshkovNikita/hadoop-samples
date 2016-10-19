@@ -14,7 +14,7 @@
     This	(D[0] 0)
     after	(D[3] 5)
     before	(D[2] 5)
-    document	(D[3] 41) (D[1] 28) (D[2] 46) 
+    document	(D[3] 41) (D[1] 28) (D[2] 46)
     equal	(D[2] 16) (D[3] 15)
     file	(D[0] 21)
     input	(D[0] 15)
