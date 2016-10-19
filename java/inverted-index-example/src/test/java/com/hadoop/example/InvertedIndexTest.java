@@ -37,7 +37,7 @@ public class InvertedIndexTest {
 		 list.add(new Text("( T[0], 0 )"));
 		 list.add(new Text("( T[1], 0 )"));
 		 reduceDriver.setInput(new Text("hi"), list);
-		 reduceDriver.withOutput(new Text("hi"), new Text("( T[0], 0) ( T[1], 0 )"));
+		 reduceDriver.withOutput(new Text("hi"), new Text("( T[0], 0 ) ( T[1], 0 )"));
 		 reduceDriver.runTest();
 	}
 }
