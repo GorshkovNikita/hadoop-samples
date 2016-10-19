@@ -27,7 +27,7 @@ public class InvertedIndexTest {
 		mapDriver.withInput(new LongWritable(), new Text(
 				"T[0]=hi there"));
 		mapDriver.addOutput(new Text("hi"), new Text("( T[0], 0 )"));
-		mapDriver.addOutput(new Text("there"), new Text("( T[0], 1 )"));
+		mapDriver.addOutput(new Text("there"), new Text("( T[0], 3 )"));
 		mapDriver.runTest();
 	}
 
