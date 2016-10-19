@@ -29,6 +29,9 @@ public class InvertedIndexJob {
         job.setMapperClass(com.hadoop.example.InvertedIndexMapper.class);
         job.setReducerClass(com.hadoop.example.InvertedIndexReducer.class);
 
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(Pair.class);
+        
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
 
