@@ -12,21 +12,19 @@ import java.util.List;
 /**
  * @author Никита
  */
-public class InvertedIndexReducer extends Reducer<Text, Pair, Text, ArrayWritable> {
+public class InvertedIndexReducer extends Reducer<Text, Pair, Text, MyArrayWritable> {
 	protected void reduce(Text key, Iterable<Pair> values, Context context)
 			throws java.io.IOException, InterruptedException {
-//		StringBuilder documentAndIndexList = new StringBuilder();
-        ArrayWritable documentAndIndexList = new ArrayWritable(Pair.class);
-        List<Pair> array = new ArrayList<Pair>();
+        
+        MyArrayWritable documentAndIndexList = new MyArrayWritable(Pair.class);
+        Pair[] arr = new Pair[1000];
         int i = 0;
         for (Iterator<Pair> iter = values.iterator(); iter.hasNext(); ) {
             Pair docNameAndIndex = iter.next();
-            array.add(docNameAndIndex);
+            arr[i] = docNameAndIndex;
             i++;
         }
-        documentAndIndexList.set((Writable[]) array.toArray());
-		Text documentList = new Text();
-//		documentList.set(documentAndIndexList.toString());
+        documentAndIndexList.set(arr);
 		context.write(key, documentAndIndexList);
 	}
 }
