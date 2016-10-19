@@ -42,4 +42,24 @@ public class Pair implements Writable {
     public String toString() {
         return "(" + this.docName + " " + this.index + ")";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Pair)) return false;
+
+        Pair pair = (Pair) o;
+
+        if (index != pair.index) return false;
+        if (docName != null ? !docName.equals(pair.docName) : pair.docName != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = docName != null ? docName.hashCode() : 0;
+        result = 31 * result + index;
+        return result;
+    }
 }

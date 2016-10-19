@@ -15,34 +15,33 @@ public class InvertedIndexTest {
 	
 	@Before
 	public void setUp() {
-//		InvertedIndexMapper mapper = new InvertedIndexMapper();
-//		InvertedIndexReducer reducer = new InvertedIndexReducer();
-//		mapDriver = MapDriver.newMapDriver();
-//		mapDriver.setMapper(mapper);
-//		reduceDriver = ReduceDriver.newReduceDriver(reducer);
+		InvertedIndexMapper mapper = new InvertedIndexMapper();
+		InvertedIndexReducer reducer = new InvertedIndexReducer();
+		mapDriver = MapDriver.newMapDriver();
+		mapDriver.setMapper(mapper);
+		reduceDriver = ReduceDriver.newReduceDriver(reducer);
 	}
 
 	@Test
 	public void testMapper() {
-//		mapDriver.withInput(new LongWritable(),
-//                new Text("D[0]=it is simple test"));
-//		mapDriver.addOutput(new Text("it"), new Pair("D[0]", 0));
-//        mapDriver.addOutput(new Text("is"), new Pair("D[0]", 3));
-//        mapDriver.addOutput(new Text("simple"), new Pair("D[0]", 6));
-//        mapDriver.addOutput(new Text("test"), new Pair("D[0]", 13));
-//		mapDriver.runTest();
+		mapDriver.withInput(new LongWritable(),
+                new Text("D[0]=it is simple test"));
+		mapDriver.addOutput(new Text("it"), new Pair("D[0]", 0));
+        mapDriver.addOutput(new Text("is"), new Pair("D[0]", 3));
+        mapDriver.addOutput(new Text("simple"), new Pair("D[0]", 6));
+        mapDriver.addOutput(new Text("test"), new Pair("D[0]", 13));
+		mapDriver.runTest();
 	}
 
 	@Test
 	public void testReducer() {
 //		List<Pair> list = new ArrayList<Pair>();
-//		list.add(new Pair("(T[0]", 0));
-//        list.add(new Pair("(T[1]", 10));
-//        Pair[] pairs = new Pair[2];
+//		list.add(new Pair("T[0]", 0));
+//        list.add(new Pair("T[1]", 10));
 //        MyArrayWritable documentAndIndexList = new MyArrayWritable(Pair.class);
-//        documentAndIndexList.set(list.toArray(new Pair[list.size()]));
-//		reduceDriver.setInput(new Text("test"), list);
-//		reduceDriver.withOutput(new Text("test"), documentAndIndexList);
+//        reduceDriver.setInput(new Text("test"), list);
+//        documentAndIndexList.set(new Pair[]{new Pair("T[0]", 0), new Pair("T[1]", 10)});
+//        reduceDriver.withOutput(new Text("test"), documentAndIndexList);
 //		reduceDriver.runTest();
 	}
 }
