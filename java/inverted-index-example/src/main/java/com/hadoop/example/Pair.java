@@ -21,6 +21,14 @@ public class Pair implements Writable {
         this.docName = docName;
     }
 
+    public String getDocName() {
+        return docName;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
     @Override
     public void readFields(DataInput in) throws IOException {
         docName = WritableUtils.readString(in);
