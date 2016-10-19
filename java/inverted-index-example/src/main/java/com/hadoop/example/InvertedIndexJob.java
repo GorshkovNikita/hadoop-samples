@@ -3,6 +3,7 @@ package com.hadoop.example;
 import java.io.IOException;
 
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.ArrayWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -31,9 +32,9 @@ public class InvertedIndexJob {
 
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(Pair.class);
-        
+
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(Text.class);
+        job.setOutputValueClass(ArrayWritable.class);
 
         job.waitForCompletion(true);
     }
