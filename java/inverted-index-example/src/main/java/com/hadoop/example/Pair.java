@@ -33,10 +33,10 @@ public class Pair implements Writable {
         out.writeInt(index);
     }
 
-    public void merge(Pair other) {
-        this.docName += other.docName;
-        this.index += other.index;
-    }
+//    public void merge(Pair other) {
+//        this.docName += other.docName;
+//        this.index += other.index;
+//    }
 
     @Override
     public String toString() {

@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class InvertedIndexMapper extends Mapper<LongWritable, Text, Text, Pair> {
 
-	private Text wordText = new Text();
+//	private Text wordText = new Text();
 
     protected void map(LongWritable key, Text value, Context context)
 			throws java.io.IOException, InterruptedException {
@@ -25,6 +25,7 @@ public class InvertedIndexMapper extends Mapper<LongWritable, Text, Text, Pair> 
 		String textStr = line[1];
 		String[] wordArray = textStr.split(" ");
         for (String word : wordArray) {
+            Text wordText = new Text();
             wordText.set(word);
             Pair docNameAndIndex = new Pair(documentName, index);
             context.write(wordText, docNameAndIndex);
