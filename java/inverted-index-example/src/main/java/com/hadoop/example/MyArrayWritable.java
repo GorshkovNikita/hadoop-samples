@@ -19,11 +19,9 @@ public class MyArrayWritable extends ArrayWritable {
     @Override
     public String toString() {
         Pair[] pairs = get();
-        System.out.println("length = " + pairs.length);
         String result = "";
         for (Pair pair : pairs) {
-            System.out.println(pair.toString());;
-            result += pair.toString();
+            result += pair.toString() + " ";
         }
         return result;
     }

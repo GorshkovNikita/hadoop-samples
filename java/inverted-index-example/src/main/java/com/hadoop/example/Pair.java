@@ -40,6 +40,6 @@ public class Pair implements Writable {
 
     @Override
     public String toString() {
-        return this.docName + "\t" + this.index;
+        return "(" + this.docName + " " + this.index + ")";
     }
 }
