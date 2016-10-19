@@ -1,46 +1,45 @@
 package com.hadoop.example;
 
 import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableUtils;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 /**
  * @author Никита
  */
 public class Pair implements Writable {
-    private String docName;
-    private Integer index;
-    private int countBytes;
+    private String docName = "";
+    private int index = 0;
 
-    public Pair() {
-    }
+    public Pair() {}
 
-    public Pair(String docName, Integer index) {
-        this.docName = docName;
+    public Pair(String docName, int index) {
         this.index = index;
-        this.countBytes = docName.getBytes().length;
+        this.docName = docName;
     }
 
+    @Override
+    public void readFields(DataInput in) throws IOException {
+        docName = WritableUtils.readString(in);
+        index = in.readInt();
+    }
+
+    @Override
     public void write(DataOutput out) throws IOException {
-        out.writeBytes(docName);
+        WritableUtils.writeString(out, docName);
         out.writeInt(index);
     }
 
-    public void readFields(DataInput in) throws IOException {
-        byte[] bytes = new byte[countBytes];
-        for (int i = 0; i < countBytes; i++) {
-            bytes[i] = in.readByte();
-        }
-        this.docName = new String(bytes, StandardCharsets.UTF_8);
-        this.index = in.readInt();
+    public void merge(Pair other) {
+        this.docName += other.docName;
+        this.index += other.index;
     }
 
-    public static Pair read(DataInput in) throws IOException {
-        Pair w = new Pair();
-        w.readFields(in);
-        return w;
+    @Override
+    public String toString() {
+        return this.docName + "\t" + this.index;
     }
 }

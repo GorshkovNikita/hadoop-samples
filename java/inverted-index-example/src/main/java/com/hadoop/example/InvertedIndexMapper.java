@@ -10,7 +10,10 @@ import org.apache.hadoop.mapreduce.Mapper;
 import java.util.AbstractMap;
 import java.util.Map;
 
-public class InvertedIndexMapper extends Mapper<LongWritable, Text, Text, TupleWritable> {
+/**
+ * @author Никита
+ */
+public class InvertedIndexMapper extends Mapper<LongWritable, Text, Text, Pair> {
 
 	private Text wordText = new Text();
 
@@ -23,7 +26,7 @@ public class InvertedIndexMapper extends Mapper<LongWritable, Text, Text, TupleW
 		String[] wordArray = textStr.split(" ");
 		for (int i = 0; i < wordArray.length; i++) {
 			wordText.set(wordArray[i]);
-            TupleWritable docNameAndIndex = new TupleWritable(new Writable[] {new Text(documentName), new IntWritable(index)});
+            Pair docNameAndIndex = new Pair(documentName, index);
 //            docNameAndIndex.set("( " + documentName + ", " + Integer.toString(index) + " )");
 			context.write(wordText, docNameAndIndex);
             index += wordText.getLength() + 1;
