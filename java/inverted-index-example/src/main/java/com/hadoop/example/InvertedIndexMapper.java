@@ -24,12 +24,12 @@ public class InvertedIndexMapper extends Mapper<LongWritable, Text, Text, Pair> 
 		String documentName = line[0];
 		String textStr = line[1];
 		String[] wordArray = textStr.split(" ");
-		for (int i = 0; i < wordArray.length; i++) {
-			wordText.set(wordArray[i]);
+        for (String word : wordArray) {
+            wordText.set(word);
             Pair docNameAndIndex = new Pair(documentName, index);
-//            docNameAndIndex.set("( " + documentName + ", " + Integer.toString(index) + " )");
-			context.write(wordText, docNameAndIndex);
+            context.write(wordText, docNameAndIndex);
+            System.out.println(wordText + " " + docNameAndIndex.toString());
             index += wordText.getLength() + 1;
-		}
+        }
 	}
 }

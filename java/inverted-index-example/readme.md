@@ -1,53 +1,34 @@
-#MapReduce Sample
-This sample uses the MapReduce API to find the Median temperature from an Input file
+# Variant 3. Inverted Index
 
 ## Sample Input File
-	
-	T[0]=This is the sample app for Inverted Index Problem
-	T[1]=We will solve it using a Simple Map Reduce Program
-	T[2]=This program is written in Java
-	
 
-## Copy Input File into HDFS
-	
-	bin/hadoop fs -copyFromLocal ../hadoop-samples/myinput/sample-inverted.txt /user/vmware/myinput/sample-inverted.txt
+    D[0]=This is sample input file
+    D[1]=Each line presents separate document
+    D[2]=Part before the equal sign is the name of the document
+    D[3]=Part after the equal sign is the text of document
 
-## Execute the MapReduce Job
-	
-	bin/hadoop jar ../hadoop-samples/java/inverted-index-example/target/inverted-index-example-1.0.jar \
-          com.hadoop.example.InvertedIndexJob  /user/vmware/myinput/sample-inverted.txt  /user/vmware/output/inverted
-
-## Copy Output to Local File System  
-
-	bin/hadoop fs -copyToLocal /user/vmware/output/inverted output/inverted
-	
-	
 ## Output from the MapReduce Task
-   
-   	$ cat output/inverted/part-r-00000 
-	Index	T[0]
-	Inverted	T[0]
-	Java	T[2]
-	Map	T[1]
-	Problem	T[0]
-	Program	T[1]
-	Reduce	T[1]
-	Simple	T[1]
-	This	T[0] T[2]	
-	We	T[1]
-	a	T[1]
-	app	T[0]
-	for	T[0]
-	in	T[2]
-	is	T[2] T[0]
-	it	T[1]
-	program	T[2]
-	sample	T[0]
-	solve	T[1]
-	the	T[0]
-	using	T[1]
-	will	T[1]
-	written	T[2]
+
+    Each	(D[1] 0)
+    Part	(D[3] 0) (D[3] 0)
+    This	(D[0] 0)
+    after	(D[3] 5)
+    before	(D[2] 5)
+    document	(D[2] 46) (D[2] 46) (D[2] 46)
+    equal	(D[3] 15) (D[3] 15)
+    file	(D[0] 21)
+    input	(D[0] 15)
+    is	(D[0] 5) (D[0] 5) (D[0] 5)
+    line	(D[1] 5)
+    name	(D[2] 34)
+    of	(D[2] 39) (D[2] 39)
+    presents	(D[1] 10)
+    sample	(D[0] 8)
+    separate	(D[1] 19)
+    sign	(D[3] 21) (D[3] 21)
+    text	(D[3] 33)
+    the	(D[3] 29) (D[3] 29) (D[3] 29) (D[3] 29) (D[3] 29)
+
 
    
   

@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class InvertedIndexTest {
-	MapDriver<LongWritable, Text, Text, Text> mapDriver;
-	ReduceDriver<Text, Text, Text, Text> reduceDriver;
+	MapDriver<LongWritable, Text, Text, Pair> mapDriver;
+	ReduceDriver<Text, Pair, Text, MyArrayWritable> reduceDriver;
 	
 	@Before
 	public void setUp() {
@@ -24,20 +24,25 @@ public class InvertedIndexTest {
 
 	@Test
 	public void testMapper() {
-//		mapDriver.withInput(new LongWritable(), new Text(
-//				"T[0]=hi there"));
-//		mapDriver.addOutput(new Text("hi"), new Text("( T[0], 0 )"));
-//		mapDriver.addOutput(new Text("there"), new Text("( T[0], 3 )"));
+//		mapDriver.withInput(new LongWritable(),
+//                new Text("D[0]=it is simple test"));
+//		mapDriver.addOutput(new Text("it"), new Pair("D[0]", 0));
+//        mapDriver.addOutput(new Text("is"), new Pair("D[0]", 3));
+//        mapDriver.addOutput(new Text("simple"), new Pair("D[0]", 6));
+//        mapDriver.addOutput(new Text("test"), new Pair("D[0]", 13));
 //		mapDriver.runTest();
 	}
 
 	@Test
 	public void testReducer() {
-//		 List<Text> list = new ArrayList<Text>();
-//		 list.add(new Text("( T[0], 0 )"));
-//		 list.add(new Text("( T[1], 0 )"));
-//		 reduceDriver.setInput(new Text("hi"), list);
-//		 reduceDriver.withOutput(new Text("hi"), new Text("( T[0], 0 ) ( T[1], 0 )"));
-//		 reduceDriver.runTest();
+//		List<Pair> list = new ArrayList<Pair>();
+//		list.add(new Pair("(T[0]", 0));
+//        list.add(new Pair("(T[1]", 10));
+//        Pair[] pairs = new Pair[2];
+//        MyArrayWritable documentAndIndexList = new MyArrayWritable(Pair.class);
+//        documentAndIndexList.set(list.toArray(new Pair[list.size()]));
+//		reduceDriver.setInput(new Text("test"), list);
+//		reduceDriver.withOutput(new Text("test"), documentAndIndexList);
+//		reduceDriver.runTest();
 	}
 }
