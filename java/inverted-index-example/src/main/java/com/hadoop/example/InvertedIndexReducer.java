@@ -15,16 +15,15 @@ import java.util.List;
 public class InvertedIndexReducer extends Reducer<Text, Pair, Text, MyArrayWritable> {
 	protected void reduce(Text key, Iterable<Pair> values, Context context)
 			throws java.io.IOException, InterruptedException {
-        
+
         MyArrayWritable documentAndIndexList = new MyArrayWritable(Pair.class);
-        Pair[] arr = new Pair[1000];
+        ArrayList<Pair> arr = new ArrayList<Pair>();
         int i = 0;
-        for (Iterator<Pair> iter = values.iterator(); iter.hasNext(); ) {
-            Pair docNameAndIndex = iter.next();
-            arr[i] = docNameAndIndex;
+        for (Pair docNameAndIndex : values) {
+            arr.add(docNameAndIndex);
             i++;
         }
-        documentAndIndexList.set(arr);
+        documentAndIndexList.set(arr.toArray(new Pair[arr.size()]));
 		context.write(key, documentAndIndexList);
 	}
 }
