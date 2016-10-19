@@ -19,14 +19,15 @@ public class InvertedIndexMapper extends Mapper<LongWritable, Text, Text, Text> 
 	protected void map(LongWritable key, Text value, Context context)
 			throws java.io.IOException, InterruptedException {
 		String[] line = value.toString().split("=");
-
+        int index = 0;
 		String documentName = line[0];
 		String textStr = line[1];
 		String[] wordArray = textStr.split(" ");
-		for(int i = 0; i < wordArray.length; i++) {
+		for (int i = 0; i < wordArray.length; i++) {
 			wordText.set(wordArray[i]);
-            docNameAndIndex.set("( " + documentName + ", " + Integer.toBinaryString(i) + " )");
+            docNameAndIndex.set("( " + documentName + ", " + Integer.toString(index) + " )");
 			context.write(wordText, docNameAndIndex);
+            index += wordText.getLength() + 1;
 		}
 	}
 }
