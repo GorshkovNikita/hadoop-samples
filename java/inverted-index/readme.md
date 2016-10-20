@@ -2,32 +2,32 @@
 
 ## Sample Input File
 
-    D[0]=This is sample input file
-    D[1]=Each line presents separate document
-    D[2]=Part before the equal sign is the name of the document
-    D[3]=Part after the equal sign is the text of document
+    Doc1=This is sample input file
+    Doc2=Each line presents separate document
+    Doc3=Part before the equal sign is the name of the document
+    Doc4=Part after the equal sign is the text of document
 
 ## Output from the MapReduce Task
 
-    Each	(D[1] 0)
-    Part	(D[2] 0) (D[3] 0)
-    This	(D[0] 0)
-    after	(D[3] 5)
-    before	(D[2] 5)
-    document	(D[3] 41) (D[1] 28) (D[2] 46)
-    equal	(D[2] 16) (D[3] 15)
-    file	(D[0] 21)
-    input	(D[0] 15)
-    is	(D[2] 27) (D[3] 26) (D[0] 5)
-    line	(D[1] 5)
-    name	(D[2] 34)
-    of	(D[3] 38) (D[2] 39)
-    presents	(D[1] 10)
-    sample	(D[0] 8)
-    separate	(D[1] 19)
-    sign	(D[2] 22) (D[3] 21)
-    text	(D[3] 33)
-    the	(D[2] 42) (D[2] 30) (D[3] 11) (D[2] 12) (D[3] 29)
+    Each	(Doc2 0)
+    Part	(Doc3 0) (Doc4 0)
+    This	(Doc1 0)
+    after	(Doc4 5)
+    before	(Doc3 5)
+    document	(Doc4 41) (Doc2 28) (Doc3 46)
+    equal	(Doc3 16) (Doc4 15)
+    file	(Doc1 21)
+    input	(Doc1 15)
+    is	(Doc3 27) (Doc4 26) (Doc1 5)
+    line	(Doc2 5)
+    name	(Doc3 34)
+    of	(Doc4 38) (Doc3 39)
+    presents	(Doc2 10)
+    sample	(Doc1 8)
+    separate	(Doc2 19)
+    sign	(Doc3 22) (Doc4 21) 
+    text	(Doc4 33)
+    the	(Doc3 42) (Doc3 30) (Doc4 11) (Doc3 12) (Doc4 29)
 
 
    

@@ -26,19 +26,19 @@ public class InvertedIndexTest {
 	@Test
 	public void testMapper() {
 		mapDriver.withInput(new LongWritable(),
-                new Text("D[0]=it is simple test"));
-		mapDriver.addOutput(new Text("it"), new Pair("D[0]", 0));
-        mapDriver.addOutput(new Text("is"), new Pair("D[0]", 3));
-        mapDriver.addOutput(new Text("simple"), new Pair("D[0]", 6));
-        mapDriver.addOutput(new Text("test"), new Pair("D[0]", 13));
+                new Text("Doc=it is simple test"));
+		mapDriver.addOutput(new Text("it"), new Pair("Doc", 0));
+        mapDriver.addOutput(new Text("is"), new Pair("Doc", 3));
+        mapDriver.addOutput(new Text("simple"), new Pair("Doc", 6));
+        mapDriver.addOutput(new Text("test"), new Pair("Doc", 13));
 		mapDriver.runTest();
 	}
 
 	@Test
 	public void testReducer() {
         List<Pair> list = new ArrayList<Pair>();
-		list.add(new Pair("T[0]", 0));
-        list.add(new Pair("T[1]", 10));
+		list.add(new Pair("Doc1", 0));
+        list.add(new Pair("Doc2", 10));
         PairList documentAndIndexList = new PairList(Pair.class);
         reduceDriver.setInput(new Text("test"), list);
         documentAndIndexList.set(new Pair[]{ list.get(0), list.get(1)});
@@ -49,9 +49,9 @@ public class InvertedIndexTest {
     @Test
     public void testPairListEquals() {
         PairList documentAndIndexList1 = new PairList(Pair.class);
-        documentAndIndexList1.set(new Pair[]{ new Pair("T[0]", 1), new Pair("T[1]", 10) });
+        documentAndIndexList1.set(new Pair[]{ new Pair("Doc1", 1), new Pair("Doc2", 10) });
         PairList documentAndIndexList2 = new PairList(Pair.class);
-        documentAndIndexList2.set(new Pair[]{ new Pair("T[0]", 1), new Pair("T[1]", 10) });
+        documentAndIndexList2.set(new Pair[]{ new Pair("Doc1", 1), new Pair("Doc2", 10) });
         assertEquals(documentAndIndexList1, documentAndIndexList2);
     }
 }
